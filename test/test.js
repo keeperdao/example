@@ -51,8 +51,8 @@ contract("HelloWorld", async (accounts) => {
         await helloWorld.setLiquidityPool(liquidityPool.address);
         await helloWorld.hello(web3.utils.toBN(1e17), web3.utils.toBN(1e17));
 
-        assert.equal(web3.utils.fromWei(await web3.eth.getBalance(helloWorld.address)), 1.1, "The balance of HelloWorld is wrong");
-        assert.equal(web3.utils.fromWei(await web3.eth.getBalance(liquidityPool.address)), 9.9, "The balance of LiquidityPool is wrong");
+        assert.equal(web3.utils.fromWei(await web3.eth.getBalance(helloWorld.address)), 0.8, "The balance of HelloWorld is wrong");
+        assert.equal(web3.utils.fromWei(await web3.eth.getBalance(liquidityPool.address)), 10.2, "The balance of LiquidityPool is wrong");
 
         console.log("The balance of HelloWorld after borrowing:", web3.utils.fromWei(await web3.eth.getBalance(helloWorld.address)), "ether");
         console.log("The balance of LiquidityPool after borrowing:", web3.utils.fromWei(await web3.eth.getBalance(liquidityPool.address)), "ether"); 
