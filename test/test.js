@@ -22,7 +22,7 @@ contract("HelloWorld", async (accounts) => {
         var borrowProxy = await BorrowProxy.deployed();
         var liquidityPool = await LiquidityPool.deployed();
         
-        await liquidityPool.initialize("1", helloWorld.address);
+        await liquidityPool.initialize("1", borrowProxy.address);
 
         // Send 10 ETH to LiquidityPool, from default account accounts[0]
         await liquidityPool.sendTransaction({value: 1e19});

@@ -1423,12 +1423,12 @@ contract LiquidityPoolV1 is ILiquidityPool, CanReclaimTokens, ReentrancyGuard, P
         if (_token != ETHEREUM) {
             ERC20(_token).safeTransfer(msg.sender, _amount);
         } else {
-            msg.sender.call.value(_amount)("");
+            msg.sender.call.value(_amount)(_data);
         }
         borrower.lend(msg.sender, _data);
         uint256 finalBalance = borrowableBalance(_token);
-        //require(finalBalance >= initialBalance, "Borrower failed to return the borrowed funds");
-        //emit Borrowed(msg.sender, _token, _amount, finalBalance.sub(initialBalance));
+        require(finalBalance >= initialBalance, "Borrower failed to return the borrowed funds");
+        emit Borrowed(msg.sender, _token, _amount, finalBalance.sub(initialBalance));
     }
 
     /// @notice Calculate the given token's outstanding balance of this contract.
