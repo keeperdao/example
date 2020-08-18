@@ -66,6 +66,10 @@ contract HelloWorld {
         owner = msg.sender;
     }
 
+    function() external payable {
+        // Do nothing.
+    }
+
     /// @dev Set the owner of this contract. This function can only be called by
     /// the current owner.
     ///
@@ -173,6 +177,6 @@ contract HelloWorld {
 
         // Notice that assets are transferred back to the liquidity pool, not to
         // the borrow proxy.
-        liquidityPool.transfer(_amountBorrowed + _amountOfProfitToReturn);
+        liquidityPool.call.value(_amountBorrowed + _amountOfProfitToReturn)("");
     }
 }
