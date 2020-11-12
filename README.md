@@ -12,5 +12,5 @@ Checkout the commented code for more information.
 
 | Contract | Address |
 |----------|---------|
-| LiquidityPool | [`0x4C8cC29226F97d92eC2D299bC14EDF16bAD436b7`](https://etherscan.io/address/0x4C8cC29226F97d92eC2D299bC14EDF16bAD436b7) |
+| LiquidityPool | [`lp.rook.eth`](https://etherscan.io/address/lp.rook.eth) |
 | BorrowProxy | [`0x82151CA501c81108d032C490E25f804787BEF3b8`](https://etherscan.io/address/0x82151CA501c81108d032C490E25f804787BEF3b8) |
