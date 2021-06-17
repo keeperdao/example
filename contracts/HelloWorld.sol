@@ -42,7 +42,7 @@ contract HelloWorld {
     address public borrowProxy;
 
     /// @dev Address of the KeeperDAO liquidity pool. This is will be the
-    /// address to which the `helloCallback` function must return all bororwed
+    /// address to which the `helloCallback` function must return all borrowed
     /// assets (and all excess profits).
     address payable public liquidityPool;
 
@@ -91,7 +91,7 @@ contract HelloWorld {
     ///
     /// @param _newLiquidityPool The new liquidity pool used by this contract.
     /// It must be a payable address, because this contract needs to be able to
-    /// return borrowed assets and profits to the liquidty pool.
+    /// return borrowed assets and profits to the liqudity pool.
     function setLiquidityPool(address payable _newLiquidityPool)
         external
         onlyOwner
@@ -102,7 +102,7 @@ contract HelloWorld {
     /// @dev This function is the entry point of this keeper. An off-chain bot
     /// will call this function whenever it decides that it wants to borrow from
     /// this KeeperDAO liquidity pool. This function is similar to what you
-    /// would expect in a "real" keeper implementation: it accepts paramters
+    /// would expect in a "real" keeper implementation: it accepts parameters
     /// telling it what / how much to borrow, and which callback on this
     /// contract should be called once the borrowed funds have been transferred.
     function hello(uint256 _amountToBorrow, uint256 _amountOfProfitToReturn)
@@ -133,8 +133,8 @@ contract HelloWorld {
                 _amountToBorrow,
                 // Second parameter of the callback.
                 _amountOfProfitToReturn
-                // Third paramter, fourth parameter, and so on (our callback
-                // only has two paramters).
+                // Third parameter, fourth parameter, and so on (our callback
+                // only has two parameters).
             )
         );
     }
@@ -148,7 +148,7 @@ contract HelloWorld {
     /// Just before this callback is called by the KeeperDAO borrow proxy, all
     /// of the assets that we want to borrow will be transferred to this
     /// contract. In this callback, we can do whatever we want with these
-    /// assets; we can arbitrage between DEXs, liquidity positions on Compound,
+    /// assets; we can arbitrage between DEXs, liquidate positions on Compound,
     /// and so on. The only requirement is that at least more than the borrowed
     /// assets is returned.
     ///
